@@ -87,13 +87,6 @@
                                                     <constraint firstAttribute="height" constant="1200" id="rIo-bV-17a"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gcu-wU-6qn">
-                                                <rect key="frame" x="0.0" y="0.0" width="90" height="115"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="90" id="8ni-FE-a7b"/>
-                                                    <constraint firstAttribute="height" constant="115" id="hyr-YB-ML6"/>
-                                                </constraints>
-                                            </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="oWC-Gl-xO1">
                                                 <rect key="frame" x="102" y="8" width="171" height="209"/>
                                                 <subviews>
@@ -429,13 +422,11 @@
                                             <constraint firstItem="1BF-WR-S5F" firstAttribute="top" secondItem="WfG-fE-Gcc" secondAttribute="top" constant="466" id="QM5-4T-TV6"/>
                                             <constraint firstItem="1BF-WR-S5F" firstAttribute="top" secondItem="Wqa-hc-5d7" secondAttribute="bottom" constant="20" id="QPs-TG-wIo"/>
                                             <constraint firstItem="13o-HA-VXS" firstAttribute="top" secondItem="WfG-fE-Gcc" secondAttribute="top" id="RFk-iZ-N4f"/>
-                                            <constraint firstItem="gcu-wU-6qn" firstAttribute="top" secondItem="WfG-fE-Gcc" secondAttribute="top" id="YsQ-r6-5GG"/>
                                             <constraint firstAttribute="trailing" secondItem="Wqa-hc-5d7" secondAttribute="trailing" constant="22.5" id="aeM-Qd-a4o"/>
                                             <constraint firstItem="M1P-1j-4Ki" firstAttribute="top" secondItem="13o-HA-VXS" secondAttribute="bottom" constant="-427" id="cYh-cX-5eb"/>
                                             <constraint firstAttribute="bottom" secondItem="13o-HA-VXS" secondAttribute="bottom" id="lhf-WU-vQD"/>
                                             <constraint firstItem="M1P-1j-4Ki" firstAttribute="top" secondItem="1BF-WR-S5F" secondAttribute="bottom" constant="20" id="pJ4-1p-F0q"/>
                                             <constraint firstItem="Wqa-hc-5d7" firstAttribute="leading" secondItem="WfG-fE-Gcc" secondAttribute="leading" constant="22.5" id="uiK-yT-miB"/>
-                                            <constraint firstItem="gcu-wU-6qn" firstAttribute="leading" secondItem="WfG-fE-Gcc" secondAttribute="leading" id="vWA-BS-4F1"/>
                                             <constraint firstAttribute="trailing" secondItem="13o-HA-VXS" secondAttribute="trailing" id="vWk-hD-USP"/>
                                         </constraints>
                                         <variation key="default">
@@ -485,7 +476,6 @@
                     <connections>
                         <outlet property="background" destination="13o-HA-VXS" id="9uY-TQ-HLQ"/>
                         <outlet property="backgroundView" destination="Wqa-hc-5d7" id="EZy-Tq-EuD"/>
-                        <outlet property="coalitionLogo" destination="gcu-wU-6qn" id="IQF-fE-Gzc"/>
                         <outlet property="correctionPointsCountLabel" destination="rtr-nF-o67" id="TwK-S2-Aqj"/>
                         <outlet property="emailLabel" destination="0fm-h2-gnk" id="o8Q-lP-LoH"/>
                         <outlet property="fullNameLabel" destination="9LK-dU-oTK" id="a2O-R6-Iom"/>

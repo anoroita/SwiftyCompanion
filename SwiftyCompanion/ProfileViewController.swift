@@ -27,7 +27,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var progressLevelView: UIProgressView!
     @IBOutlet weak var tableView1: UITableView!
     @IBOutlet weak var tableView2: UITableView!
-    @IBOutlet weak var coalitionLogo: UIImageView!
     
     
     override func viewDidLoad() {
@@ -37,21 +36,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         getAvatar()
         getContacts()
         getProgressLevel()
-        setCoalitionBackground()
-    }
-    
-    func setCoalitionBackground()
-    {
-        if let coalition = self.api?.coalition
-        {
-            if coalition.isEmpty { return }
-            else if coalition[0].name == nil { return }
-            if coalition[0].name == "The Alliance" || coalition[0].name == "The Empire" || coalition[0].name == "The Hive" || coalition[0].name == "The Union"
-            {
-                self.background.image = UIImage(named: coalition[0].name!)
-                self.coalitionLogo.image = UIImage(named: coalition[0].name! + " logo")
-            }
-        }
     }
     
     func getContacts()
@@ -77,9 +61,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             if let data = try? Data(contentsOf: url!) {
                 DispatchQueue.main.async {
                     self.profilePicture.layer.borderWidth = 1
-                    self.profilePicture.layer.masksToBounds = false
-                    self.profilePicture.layer.borderColor = UIColor.lightGray.cgColor
-                    self.profilePicture.layer.cornerRadius = 15 //(avatarView.frame.height/2)
                     self.profilePicture.clipsToBounds = true
                     self.profilePicture.image = UIImage(data: data)
                 }
@@ -105,12 +86,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //How many section in Tableview
     func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
     
+    //How many rows per section, depends on the number of results returned
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if tableView == tableView1 {
@@ -121,6 +103,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    //Asks the data source (API results) for a cell to insert in a particular location of the table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
 
@@ -166,6 +149,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         return UITableViewCell()
     }
     
+    //Releases all resources
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         self.api?.projectsArray.removeAll()

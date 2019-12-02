@@ -23,10 +23,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func searchUserAction(_ sender: UIButton) {
-        if loginText.text! == "me" {
-            self.showAlert(error: "Oops", message: "I don't know who you are :(\n Use your login, please.")
-        }
-        else {
             let _ = api.getUserData(login: loginText.text!, completionHandler: { user, error in
                 DispatchQueue.main.async {
                     if let userData = user {
@@ -53,7 +49,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             })
-        }
     }
     
     
@@ -61,10 +56,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if userData.login == (self.loginText.text!.lowercased()) {
             self.api.user = userData
         }
-//        print("USER")
-//        print(self.api.user)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchSegue", api.user != nil
         {

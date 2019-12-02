@@ -14,8 +14,8 @@ struct BearerToken: Decodable {
 
 class IntraAPI
 {
-    let myUid: String = "e780002851a785cdc98ad2e8e0ae15b80f71c14901b3d4fcd164ecbcc2592742"
-    let mySecret: String = "28b5d4753185b04233d747e8617cf4851dffad5cc8d0d3a36b4304472412df23"
+    let myUid: String = "3495c8a6239f5e353773399867a6ac2cefc3070e44dfe331e3102aa464cc9eaf"
+    let mySecret: String = "5adfe54405674e60ef15e02364256ef35cb88fcdfadc0f1b17bd5f9eda042ab9"
     
     var token: BearerToken?
     var user : User?
@@ -130,7 +130,7 @@ class IntraAPI
             for key in projectArr
             {
                 guard let slug = key.project?.slug else { continue }
-                guard let name = key.project?.name else { continue }
+                guard (key.project?.name) != nil else { continue }
                 if (key.project?.parent_id == nil && !slug.hasPrefix("piscine-c-")) {
                     projectsArray.append(key)
                 }
