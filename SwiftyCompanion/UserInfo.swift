@@ -36,7 +36,6 @@ struct Skills: Decodable {
 struct Cursus: Decodable {
     let grade: String?
     let level: Float?
-    let has_coalition: Bool
     let skills: [Skills]?
 }
 
@@ -54,8 +53,4 @@ struct User: Decodable {
     
     var cursus_users: [Cursus]?
     var projects_users: [ProjectsUser]?
-}
-
-struct Coalition: Decodable {
-    let name : String?
 }

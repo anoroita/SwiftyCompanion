@@ -19,7 +19,6 @@ class IntraAPI
     
     var token: BearerToken?
     var user : User?
-    var coalition: [Coalition]?
     var projectsArray = [ProjectsUser]()
     
     func getToken()
@@ -48,44 +47,9 @@ class IntraAPI
             catch
             {
                 print(error)
-                print("Intra in da lag")
+                print("Intra strike!")
             }
         }.resume()
-    }
-    
-    func coalitionRequest(completionHandler: @escaping ([Coalition]?, Error?) -> Void)
-    {
-        guard let login: String = self.user?.login else {
-            print("Invalid login")
-            return
-        }
-        guard let newToken = self.token else {
-            print("token is not ready yet")
-            return
-        }
-        print(login)
-        guard let url = URL(string : "https://api.intra.42.fr/v2/users/" + login + "/coalitions") else {
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        
-        request.httpMethod = "GET"
-        request.addValue("Bearer " +  newToken.access_token, forHTTPHeaderField: "Authorization")
-        
-        let session = URLSession.shared
-        session.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return }
-            do
-            {
-                let responseJson = try JSONDecoder().decode([Coalition].self, from: data)
-                completionHandler(responseJson, nil)
-            }
-            catch
-            {
-                completionHandler(nil, error)
-            }
-            }.resume()
     }
     
     func getUserData(login: String, completionHandler: @escaping (User?, Error?) -> Void) -> (Bool)

@@ -28,24 +28,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     if let userData = user {
                         if userData.login != nil {
                             self.getUserInfo(userData)
-                            self.api.coalitionRequest() { coalition, error in
-                                DispatchQueue.main.async {
-                                    if let userCoalition = coalition {
-                                        self.api.coalition = userCoalition
-                                        print(self.api.coalition!)
-                                        self.api.getProjects()
-                                        self.performSegue(withIdentifier: "searchSegue", sender: self)
-                                    }
-                                }
-                            }
+                            self.api.getProjects()
+                            self.performSegue(withIdentifier: "searchSegue", sender: self)
                         }
-                        else    {
+                        else {
                             self.showAlert(error: "Sorry...", message: "Invalid login")
                         }
-                    }
-                    if self.api.user == nil || (self.api.user?.cursus_users?.isEmpty)!
-                    {
-                        self.showAlert(error: "Error...", message: "Invalid login\n Perhaps you tried to use the user ID instead login")
                     }
                 }
             })
